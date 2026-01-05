@@ -17,8 +17,8 @@ A comprehensive exploration of `auto` and `decltype` type deduction.
 | `rrx` | `int&&` |
 | `crrx` | `const int&&` |
 | `px` | `int*` |
-| `cpx` | `const int*` |
-| `pcx` | `int* const` |
+| `pcx` | `const int*` |
+| `cpx` | `int* const` |
 | `cpcx` | `const int* const` |
 
 ## 2. decltype on Expressions
@@ -129,11 +129,11 @@ Preserves the **exact type** including references and cv-qualifiers.
 | Declaration | Deduced Type | Note |
 |-------------|-------------|------|
 | `auto v = px` | `int*` | |
-| `auto v = cpx` | `const int*` | pointee const preserved |
-| `auto v = pcx` | `int*` | top-level const stripped |
+| `auto v = pcx` | `const int*` | pointee const preserved |
+| `auto v = cpx` | `int*` | top-level const stripped |
 | `auto v = cpcx` | `const int*` | top-level const stripped |
 | `auto* v = px` | `int*` | |
-| `auto* v = cpx` | `const int*` | pointee const preserved |
+| `auto* v = pcx` | `const int*` | pointee const preserved |
 | `const auto* v = px` | `const int*` | adds pointee const |
 | `auto* const v = px` | `int* const` | pointer is const |
 

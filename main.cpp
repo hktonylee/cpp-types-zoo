@@ -40,8 +40,8 @@ int main() {
     const int&& crrx = 42;           // const rvalue reference
     
     int* px = &x;                    // pointer
-    const int* cpx = &x;             // pointer to const
-    int* const pcx = &x;             // const pointer
+    const int* pcx = &x;             // pointer to const
+    int* const cpx = &x;             // const pointer
     const int* const cpcx = &x;      // const pointer to const
 
     std::cout << "# C++ Types Zoo\n\n";
@@ -70,8 +70,8 @@ int main() {
     PRINT_ROW("rrx", decltype(rrx));
     PRINT_ROW("crrx", decltype(crrx));
     PRINT_ROW("px", decltype(px));
-    PRINT_ROW("cpx", decltype(cpx));
     PRINT_ROW("pcx", decltype(pcx));
+    PRINT_ROW("cpx", decltype(cpx));
     PRINT_ROW("cpcx", decltype(cpcx));
     std::cout << "\n";
 
@@ -193,11 +193,11 @@ int main() {
     std::cout << "| Declaration | Deduced Type | Note |\n";
     std::cout << "|-------------|-------------|------|\n";
     { auto v = px;   std::cout << "| `auto v = px` | `" << type_name<decltype(v)>() << "` | |\n"; }
-    { auto v = cpx;  std::cout << "| `auto v = cpx` | `" << type_name<decltype(v)>() << "` | pointee const preserved |\n"; }
-    { auto v = pcx;  std::cout << "| `auto v = pcx` | `" << type_name<decltype(v)>() << "` | top-level const stripped |\n"; }
+    { auto v = pcx;  std::cout << "| `auto v = pcx` | `" << type_name<decltype(v)>() << "` | pointee const preserved |\n"; }
+    { auto v = cpx;  std::cout << "| `auto v = cpx` | `" << type_name<decltype(v)>() << "` | top-level const stripped |\n"; }
     { auto v = cpcx; std::cout << "| `auto v = cpcx` | `" << type_name<decltype(v)>() << "` | top-level const stripped |\n"; }
     { auto* v = px;  std::cout << "| `auto* v = px` | `" << type_name<decltype(v)>() << "` | |\n"; }
-    { auto* v = cpx; std::cout << "| `auto* v = cpx` | `" << type_name<decltype(v)>() << "` | pointee const preserved |\n"; }
+    { auto* v = pcx; std::cout << "| `auto* v = pcx` | `" << type_name<decltype(v)>() << "` | pointee const preserved |\n"; }
     { const auto* v = px;  std::cout << "| `const auto* v = px` | `" << type_name<decltype(v)>() << "` | adds pointee const |\n"; }
     { auto* const v = px;  std::cout << "| `auto* const v = px` | `" << type_name<decltype(v)>() << "` | pointer is const |\n"; }
     std::cout << "\n";
