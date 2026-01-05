@@ -35,9 +35,9 @@ int main() {
     int x = 42;                      // plain int
     const int cx = 42;               // const int
     int& rx = x;                     // lvalue reference
-    const int& crx = x;              // const lvalue reference
+    const int& rcx = x;              // const lvalue reference
     int&& rrx = std::move(x);        // rvalue reference (but rrx itself is lvalue)
-    const int&& crrx = 42;           // const rvalue reference
+    const int&& rrcx = 42;           // const rvalue reference
     
     int* px = &x;                    // pointer
     const int* pcx = &x;             // pointer to const
@@ -66,9 +66,9 @@ int main() {
     PRINT_ROW("x", decltype(x));
     PRINT_ROW("cx", decltype(cx));
     PRINT_ROW("rx", decltype(rx));
-    PRINT_ROW("crx", decltype(crx));
+    PRINT_ROW("rcx", decltype(rcx));
     PRINT_ROW("rrx", decltype(rrx));
-    PRINT_ROW("crrx", decltype(crrx));
+    PRINT_ROW("rrcx", decltype(rrcx));
     PRINT_ROW("px", decltype(px));
     PRINT_ROW("pcx", decltype(pcx));
     PRINT_ROW("cpx", decltype(cpx));
@@ -86,9 +86,9 @@ int main() {
     PRINT_ROW("decltype(x)", decltype(x));
     PRINT_ROW("decltype(cx)", decltype(cx));
     PRINT_ROW("decltype(rx)", decltype(rx));
-    PRINT_ROW("decltype(crx)", decltype(crx));
+    PRINT_ROW("decltype(rcx)", decltype(rcx));
     PRINT_ROW("decltype(rrx)", decltype(rrx));
-    PRINT_ROW("decltype(crrx)", decltype(crrx));
+    PRINT_ROW("decltype(rrcx)", decltype(rrcx));
     std::cout << "\n";
 
     std::cout << "### 2.2 decltype on Parenthesized Expressions\n\n";
@@ -119,7 +119,7 @@ int main() {
     { auto v = x;            PRINT_ROW("auto v = x", decltype(v)); }
     { auto v = cx;           PRINT_ROW("auto v = cx", decltype(v)); }
     { auto v = rx;           PRINT_ROW("auto v = rx", decltype(v)); }
-    { auto v = crx;          PRINT_ROW("auto v = crx", decltype(v)); }
+    { auto v = rcx;          PRINT_ROW("auto v = rcx", decltype(v)); }
     { auto v = rrx;          PRINT_ROW("auto v = rrx", decltype(v)); }
     { auto v = std::move(x); PRINT_ROW("auto v = std::move(x)", decltype(v)); }
     { auto v = get_value();  PRINT_ROW("auto v = get_value()", decltype(v)); }
@@ -133,7 +133,7 @@ int main() {
     { auto& v = x;           PRINT_ROW("auto& v = x", decltype(v)); }
     { auto& v = cx;          PRINT_ROW("auto& v = cx", decltype(v)); }
     { auto& v = rx;          PRINT_ROW("auto& v = rx", decltype(v)); }
-    { auto& v = crx;         PRINT_ROW("auto& v = crx", decltype(v)); }
+    { auto& v = rcx;         PRINT_ROW("auto& v = rcx", decltype(v)); }
     { auto& v = rrx;         PRINT_ROW("auto& v = rrx", decltype(v)); }
     { auto& v = get_lref();  PRINT_ROW("auto& v = get_lref()", decltype(v)); }
     std::cout << "\n";
@@ -156,7 +156,7 @@ int main() {
     { auto&& v = x;            std::cout << "| `auto&& v = x` | `" << type_name<decltype(v)>() << "` | x is lvalue |\n"; }
     { auto&& v = cx;           std::cout << "| `auto&& v = cx` | `" << type_name<decltype(v)>() << "` | cx is lvalue |\n"; }
     { auto&& v = rx;           std::cout << "| `auto&& v = rx` | `" << type_name<decltype(v)>() << "` | rx is lvalue |\n"; }
-    { auto&& v = crx;          std::cout << "| `auto&& v = crx` | `" << type_name<decltype(v)>() << "` | crx is lvalue |\n"; }
+    { auto&& v = rcx;          std::cout << "| `auto&& v = rcx` | `" << type_name<decltype(v)>() << "` | rcx is lvalue |\n"; }
     { auto&& v = rrx;          std::cout << "| `auto&& v = rrx` | `" << type_name<decltype(v)>() << "` | rrx is lvalue! |\n"; }
     { auto&& v = std::move(x); std::cout << "| `auto&& v = std::move(x)` | `" << type_name<decltype(v)>() << "` | xvalue |\n"; }
     { auto&& v = get_value();  std::cout << "| `auto&& v = get_value()` | `" << type_name<decltype(v)>() << "` | prvalue |\n"; }

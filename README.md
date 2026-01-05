@@ -13,9 +13,9 @@ A comprehensive exploration of `auto` and `decltype` type deduction.
 | `x` | `int` |
 | `cx` | `const int` |
 | `rx` | `int&` |
-| `crx` | `const int&` |
+| `rcx` | `const int&` |
 | `rrx` | `int&&` |
-| `crrx` | `const int&&` |
+| `rrcx` | `const int&&` |
 | `px` | `int*` |
 | `pcx` | `const int*` |
 | `cpx` | `int* const` |
@@ -32,9 +32,9 @@ When `decltype` is applied to an **unparenthesized** id-expression, it yields th
 | `decltype(x)` | `int` |
 | `decltype(cx)` | `const int` |
 | `decltype(rx)` | `int&` |
-| `decltype(crx)` | `const int&` |
+| `decltype(rcx)` | `const int&` |
 | `decltype(rrx)` | `int&&` |
-| `decltype(crrx)` | `const int&&` |
+| `decltype(rrcx)` | `const int&&` |
 
 ### 2.2 decltype on Parenthesized Expressions
 
@@ -64,7 +64,7 @@ When `decltype` is applied to a **parenthesized** expression `(expr)`, it consid
 | `auto v = x` | `int` |
 | `auto v = cx` | `int` |
 | `auto v = rx` | `int` |
-| `auto v = crx` | `int` |
+| `auto v = rcx` | `int` |
 | `auto v = rrx` | `int` |
 | `auto v = std::move(x)` | `int` |
 | `auto v = get_value()` | `int` |
@@ -78,7 +78,7 @@ When `decltype` is applied to a **parenthesized** expression `(expr)`, it consid
 | `auto& v = x` | `int&` |
 | `auto& v = cx` | `const int&` |
 | `auto& v = rx` | `int&` |
-| `auto& v = crx` | `const int&` |
+| `auto& v = rcx` | `const int&` |
 | `auto& v = rrx` | `int&` |
 | `auto& v = get_lref()` | `int&` |
 
@@ -102,7 +102,7 @@ When `decltype` is applied to a **parenthesized** expression `(expr)`, it consid
 | `auto&& v = x` | `int&` | x is lvalue |
 | `auto&& v = cx` | `const int&` | cx is lvalue |
 | `auto&& v = rx` | `int&` | rx is lvalue |
-| `auto&& v = crx` | `const int&` | crx is lvalue |
+| `auto&& v = rcx` | `const int&` | rcx is lvalue |
 | `auto&& v = rrx` | `int&` | rrx is lvalue! |
 | `auto&& v = std::move(x)` | `int&&` | xvalue |
 | `auto&& v = get_value()` | `int&&` | prvalue |
